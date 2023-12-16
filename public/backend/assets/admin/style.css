@@ -1,0 +1,54 @@
+/* After Login Profile Style Start */
+.w-full {
+    color: black;
+}
+
+/* .navbar .navbar-menu-wrapper {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+} */
+
+
+
+.preview-list .preview-item .preview-item-content p {
+    color: white;
+}
+
+.text-center {
+    color: white;
+}
+
+#profile-view-hidden {
+    display: none !important;
+}
+
+/* After Login Profile Style End */
+
+/* Update Profile Picture Start  */
+
+.profile-img {
+    height: 200px;
+    width: 200px;
+    border: 2px solid gray;
+}
+
+.choose-file {
+    margin-left: -3rem;
+    opacity: 0;
+    margin-top: -35px;
+    position: absolute;
+    z-index: 10;
+    width: 110px;
+    cursor: pointer;
+}
+
+.camera-icon {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-left: 110px;
+    margin-top: -42px;
+    opacity: .7;
+}
+
+/* Update Profile Picture End  */

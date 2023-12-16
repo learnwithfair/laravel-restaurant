@@ -1,0 +1,100 @@
+/* For Input search focus */
+input#itemSearch:focus {
+    border: 1px solid #ffffff;
+}
+
+
+/* For Table Start */
+.table thead th {
+    color: white;
+}
+
+.collapse {
+    visibility: initial;
+}
+
+a {
+    color: #6c7293;
+}
+
+.table-hover>tbody>tr:hover a {
+    color: white !important;
+}
+
+
+
+/* For Table End */
+
+/* For Modal Start */
+.modal_icon img {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+}
+
+.modal_icon {
+
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+}
+
+/* For Modal End */
+
+
+/* For Text-area start */
+textarea {
+    display: block;
+    width: 100%;
+    padding: 0.56rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1;
+    /* color: #212529; */
+    color: white !important;
+    background-color: #2A3038;
+    background-clip: padding-box;
+    border: 1px solid #2c2e33;
+    appearance: none;
+    border-radius: 2px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* For Text-area End */
+.file-upload-browse {
+    background-color: darkcyan;
+
+}
+
+/* Manage Table */
+.manage-table th,
+.manage-table td {
+    text-align: center;
+}
+
+/* Manage Table */
+.message-table td,
+.message-table a {
+    color: rgb(209, 207, 209);
+}
+
+.message-table th,
+.message-table td {
+    text-align: center;
+}
+
+.message-table .alignleft {
+    text-align: left;
+}
+
+.alignleft {
+    text-align: left;
+}
+
+.file-upload-info {
+    background-color: #2A3038 !important;
+}
+
+.input-group:focus {
+    border: 1px solid #ffffff;
+}
