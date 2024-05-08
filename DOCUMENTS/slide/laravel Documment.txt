@@ -1,0 +1,381 @@
+-----------------------------------------------------------------------------------------
+					Laravel Tutorial
+-----------------------------------------------------------------------------------------
+#01. Required Software for Laravel Project
+1. Laravel.
+2. xampp
+3. Composer.
+4. node.js (For React js)
+5. JSON Formatter Extension (For dd format)
+
+#02. Create Laravel Project
+   => Command: composer create-project laravel/laravel project-name
+	       Or, laravel new project-name
+   => For creating Registration and login in Laravel
+	         (i) composer require laravel/jetstream
+		(ii) php artisan jetstream:install livewire
+   => For importing react js in Laravel
+		 (i) composer require laravel/ui
+		(ii) php artisan ui react / php artisan ui react --auth (with auth)
+	       (iii) npm install
+		(iv) npm run dev
+
+#03. Start Laravel Project
+   => Command: php artisan serve
+
+#04. Open Project by vs code
+   => Command: code .
+
+#05. Check Version
+   => Command: 
+	  (i) php artisan --version (For Laravel)
+	 (ii) php -v (For php)
+	(iii) composer -v (For composer)
+	 (iv) node -v (For node.js)
+
+
+
+#06. Create Virtual Host:
+1. Go to the \xampp\apache\conf\extra\httpd-vhosts.conf file
+   => Code: 
+	   1.<VirtualHost *:80>    
+    		DocumentRoot "project path"
+    		ServerName hostName (Ex-laravel.com)
+	      </VirtualHost>
+2. Go to the C:\Windows\System32\drivers\etc\hosts file
+   => Code: 
+	   127.0.0.1       hostName (Edit with run as administrator)
+
+#07. File Placement
+01. CSS, JS, Image place in the public folder.
+02. php file store in the Resources/View folder.
+03. Controller file place in the app/Http/Controllers folder. 
+   => FileName: Example of controlelr name CategoryController.
+   => Used:  	Controller file used for Route control.
+   => Code:     get/put/update/delete etc method create.
+   => Command:  php artisan make:controller ControllerName (With Manually).
+		php artisan make:controller ControllerName invokable (With 1 method).
+		php artisan make:controller ControllerName --resource (With 7 method).
+
+04. Request file place in the app/Http/Requests folder. 
+   => FileName: Example of Request file name CategoryController
+   => Used:     Request file mainly used for form validation.
+   => Code:     public function{return true;} 
+		and use function rules(For set requirement/required),
+		messages(For set custom message),attributes(For change default value).
+   => Command:  php artisan make:request RequestName.
+
+05. Model file place in the app/Http/Models folder. 
+   => FileName: Example of Model file name Category.(usualy single and singular).
+   => Used:     Model file mainly used for connect database.
+   => Code:     should be used "protected $fillable = ['name','description',...];"
+   => Command:  php artisan make:model ModelName.
+
+06. Migration file place in the database/migrations folder. 
+   => FileName: Example of Model file name create_file_name_table.(used small letter and separate by _).
+   => Used:     Model file mainly used for create data table.
+   => Code:     use nullable() property.
+   => Command:  php artisan make:migration create_file_name_table.
+
+07. Combine Command For Model, Migration & Controller with resource.
+   => Command:  php artisan make:model ModelName -mcr
+
+08. Route documents place in the routes/web.php File.  
+   => Used:     Route file mainly used for move one page to another page.
+   => Code:     Route::get( '/', function () { return view( 'welcome' ); } );
+		Route::get( 'url/{id,name}', [ControllerName::class, 'functionName'] ); (Using controller and (id, name) is passing value by url ).
+		Route::resource( 'url', ControllerName::class ); (Resource automatically call function).
+		Route::get( 'url/{id,name}', [ControllerName::class, 'functionName'] )->name('folder.fileName');(For Name Route)
+		Route::prefix('prefixText')->controller(ControllerName::class)->group(function(){Route::get('url','functionName')});(For prefix and Grouping Route)
+   => Method:	get/post(for form submit)/PUT(For Update)/PATCH/DELETE(For Delete).
+   => Command:  php artisan route:list
+
+09. Component & slot file place in the resource/view/components folder. 
+   => FileName: Example of components file name header.blade.php.(used small letter and separate by _).
+   => Used:     Component file mainly used for reuseable code.
+   => Code:     
+         -> Option -01 
+		<h3>This code place in the component file.</h3> 
+		<x-fileName></x-fileName>(For display)
+         -> Option -02 (default component with value passing)
+		<h3>{{ $slot }}</h3> This code place in the component file.
+		<x-fileName></x-fileName>.(For display)
+         -> Option -03 (Name componet with value passing)
+		<h3>{{ $componentName }}</h3> This code place in the component file.
+		<x-fileName:componentName></x-fileName>.(For display)
+   => Command:  php artisan make:component file_name.
+
+10. Custom error page place in the resource/view/errors folder. 
+         -> Option -01 
+   		=> FileName: Example of error page name 404.blade.php
+         -> Option -02 (All errors page automatically created)
+		=> Command: php artisan vendor:publish --tag=laravel-errors
+ 
+11. Extra Component such as- (Illuminate database, fakerphp, phroute, database seeder). 
+  
+#08. For database create.
+   => Command:  (using cmd)
+	  (i) mysql -u root -p (password: Not Used)
+	 (ii) create database restaurant;
+	(iii) show databases;
+	 (iv) exit;
+
+#09. For data table create.
+   => Command:  php artisan migrate 
+		php artisan migrate:rollback (For delete column/data table from database)
+
+#10. For connect database go to .env file
+   => Code:     DB_DATABASE=database_name
+
+#11. Insert data using cmd
+   => Command: 
+	  (i) php artisan tinker
+	 (ii) DB::table('tableName')->insert(["name"=>"MD RAHATUL RABBI","email"=>"rahatul@gmail.com","password"=>bcrypt("rahatul")]);(For Insert values in the data table)
+	(iii) DB::table('tableName')->get(); (For Display)
+	 (iv) exit()
+
+#12. File extention
+1. For raw php file use .php extention.
+2. For laravel php file use .blade.php extention. write code with {{ }}
+3. layout file name start with _ line. Ex- _master.blade.php
+
+-----------------------------------------------------------------------------------------
+#13 					Code
+-----------------------------------------------------------------------------------------
+
+1. For Form
+   => Code: 
+	 (i) @csrf
+	(ii) @method('DELETE/PUT') (For delete or Update)
+       (iii) bcrypt('password'); (For secure password like as md5())
+	(iv) CKEDITOR, Summernote
+	 (v)    $image     = $request->slider_img;
+        	$imageName = time() . '.' . $image->getClientOriginalExtension();
+        	$request->slider_img->move( 'uploads/slider', $imageName );
+        	$data['image'] = $imageName;        	      	
+
+2. For Insert/Show/Update/Edit/Delete using Model
+   => Code: (For Display )   ----------------------------------------------
+	dd( $request->all() ); (For check data)
+      -> Option -01
+           $data['categories'] = ModelName::all();  
+           return view( 'folderName.fileName', $data );
+      -> Option -02
+           $categories = ModelName::all();
+           return view( 'folderName.fileName', ['categories' => $categories] );
+      -> Option -03
+          $categories =ModelName::all();
+          return view( 'folderName.fileName', compact( 'categories' ) );
+
+   => Code: (For Store)      ------------------------------------------------
+	name and description are input's name in the form
+      -> Option -01
+           $data['tableColumnName']        = $request->name;
+           $data['tableColumnName'] 	   = $request->description;
+           ModelName::create( $data );
+           return back();
+
+      -> Option -02
+           ModelName::create( [
+             'tableColumnName'        => $request->name,
+             'tableColumnName' 	      => $request->description,
+           ] );
+
+   => Code: (For display single data)      ------------------------------------------------
+      -> Option -01
+           $data['category'] = $parameterName;
+           return view( 'folderName.fileName', $data );
+
+      -> Option -02
+           return view( 'folderName.fileName', ['category' => $parameterName] );
+
+      -> Option -03
+           return view( 'folderName.fileName', compact( 'parameterName' ) );
+
+
+   => Code: (For display Edit Fill data)      ------------------------------------------------
+      -> Option -01
+           $data['category'] = $parameterName;
+           return view( 'folderName.fileName', $data );
+      -> Option -02
+           return view( 'folderName.fileName', ['category' => $parameterName] );
+      -> Option -03
+           return view( 'folderName.fileName', compact( 'parameterName' ) );
+
+   => Code: (For Update data)      ------------------------------------------------
+	name and description are input's name in the form
+      -> Option -01
+           $data['tableColumnName']        = $request->name;
+           $data['tableColumnName'] 	   = $request->description;
+           $parameterName->update( $data );
+           return redirect()->route( 'folderName.fileName' );
+
+      -> Option -02
+           $parameterName->update( [
+               'tableColumnName'        => $request->name,
+               'tableColumnName' 	=> $request->description,
+           ] );
+           return redirect()->route( 'folderName.fileName' );
+
+      -> Option -03
+           ModelName::where( 'id', $parameterName->id )->update( [
+             'tableColumnName'        => $request->name,
+             'tableColumnName'        => $request->description,
+           ] );
+
+   => Code: (For Delete data)      ------------------------------------------------
+	$parameterName->delete();
+
+3. For Insert/Show/Update/Edit/Delete using DB
+   => Code: (For Display )   ----------------------------------------------
+	dd( $request->all() ); (For check data)
+      -> Option -01	
+           $data['categories'] = DB::table( 'TableName' )->get(); 
+           return view( 'folderName.fileName', $data );
+      -> Option -02
+           $categories = DB::table( 'TableName' )->get();
+           return view( 'folderName.fileName', ['categories' => $categories] );
+      -> Option -03
+          $variableName = DB::table( 'TableName' )->get();
+          return view( 'folderName.fileName', compact( 'variableName' ) );
+
+   => Code: (For Store)      ------------------------------------------------
+	name and description are input's name in the form
+      -> Option -01
+           $data['tableColumnName']        = $request->name;
+           $data['tableColumnName'] 	   = $request->description;
+           DB::table( 'TableName' )->insert( $data );
+           return back();
+
+      -> Option -02
+           DB::table( 'TableName' )->insert([
+             'tableColumnName'        => $request->name,
+             'tableColumnName' 	      => $request->description,
+           ] );
+
+   => Code: (For display single data)      ------------------------------------------------
+      -> Option -01
+           $data['category'] = DB::table( 'TableName' )->where( 'id', $id )->first();
+           return view( 'folderName.fileName', $data );
+
+      -> Option -02
+           return view( 'folderName.fileName', ['category' => DB::table( 'TableName' )->where( 'id', $id )->first()] );
+
+      -> Option -03
+	   $variableName['category'] = DB::table( 'TableName' )->where( 'id', $id )->first();
+           return view( 'folderName.fileName', compact( 'variableName' ) );
+
+
+   => Code: (For display Edit Fill data)      ------------------------------------------------
+      -> Option -01
+           $data['category'] = DB::table( 'TableName' )->where( 'id', $id )->first();
+           return view( 'folderName.fileName', $data );
+      -> Option -02
+           return view( 'folderName.fileName', ['category' => DB::table( 'TableName' )->where( 'id', $id )->first();] );
+      -> Option -03
+           $variableName['category'] = DB::table( 'TableName' )->where( 'id', $id )->first();
+           return view( 'folderName.fileName', compact( 'variableName' ) );
+
+   => Code: (For Update data)      ------------------------------------------------
+	name and description are input's name in the form
+      -> Option -01
+           $data['tableColumnName']        = $request->name;
+           $data['tableColumnName'] 	   = $request->description;
+           DB::table( 'TableName' )->where( 'id', $id )->update( $data );
+           return redirect()->route( 'folderName.fileName' );
+
+      -> Option -02
+           DB::table( 'TableName' )->where( 'id', $id )->update( [
+             'tableColumnName'        => $request->name,
+             'tableColumnName'        => $request->description,
+           ] );
+
+   => Code: (For Delete data)      ------------------------------------------------
+	DB::table( 'TableName' )->where( 'id', $id )->delete();
+
+#14. Form Validation
+
+   => Code:       ------------------------------------------------
+      -> Option -01
+         Form validation
+             $request->validate( [
+               'inputName'        => 'required|max:255',
+               'inputName'        => 'required',
+              ], [
+             'inputName.required'        => "Name must be filled up!",
+             'inputName.required'  	 => "Description filled must be required!",
+              ] );
+
+      -> Option -02 (Using Class)
+	    public function store( CategoryFormRequest $request ){         
+             $request->validated();
+	     }
+	In the request class that place in the app/http/Requests initialized function as-
+	 authorize(return true),rules(set required condition),messages(set custom message),attributes(change default message).
+
+   => Display message:       ------------------------------------------------
+	 @error('name')
+    		{{ $message }}
+         @enderror
+
+#15. Set/get session/ alert
+
+   => Code: (For set)      ------------------------------------------------
+      -> Option -01
+          session()->flash( 'success', "Messages" );
+          return redirect()->route( 'folderName.fileName' );
+
+      -> Option -02
+          Session::flash( 'warning', "Messages" );
+          return redirect()->route( 'folderName.fileName' );
+
+      -> Option -03
+          return redirect()->route( 'folderName.fileName' )->with( 'success', "danger" );
+   => Code: (For get)       ------------------------------------------------
+      -> Option -01
+          @if (session('success'))          
+   		 {{ session('success') }}
+    	  @endif 
+      -> Option -02
+          @if (session()->has('success'))
+                 {{ session()->get('success') }}   
+          @endif
+      -> Option -03
+           @if (Session::has('success')) 
+		  {{ session()->get('success') }}   
+           @endif
+      -> Option -04 (For together print)
+	   @foreach ($errors->all() as $error )
+              <li>{{ $error }}</li>
+           @endforeach
+
+#16. Method of Laravel
+	  (i)  @include('folderName.fileName') (Full page include without @yield)
+	 (ii)  @extends('folderName.fileName') (Full page include with @yield)
+	(iii)  @yield('title')
+	 (iv)  @section('title') @endsection
+	  (v)  route('folderName.fileName') (For URL)
+	 (vi)  asset('path') (For css/js/image link)
+
+
+#17. Conditional statment and loop in Laravel
+	(i) @if ........@endif
+	(ii) @foreach (variableName that through in the Control file as $valiableName) -- $valiableName->keyName --- @endforeach
+
+#18. cache clear
+      -> Option -01 (For Localhost)
+   	  => Command: php artisan optimize:clear
+
+      -> Option -02 (For Live Server)
+   	  => Code: (Place in the web.php file)------------------------------------------------
+		Route::get( '/clear', function () {
+    		Artisan::call( 'optimize:clear' );
+    		return "
+          		events ..... DONE </br>
+          		views .......DONE </br>
+          		cache ...... DONE </br>
+          		route .......DONE </br>
+          		config ......DONE </br>
+          		compiled ....DONE </br>
+    			";
+		} );
