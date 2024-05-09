@@ -115,10 +115,11 @@
   
 #08. For database create.
    => Command:  (using cmd)
-	  (i) mysql -u root -p (password: Not Used)
-	 (ii) create database restaurant;
-	(iii) show databases;
-	 (iv) exit;
+   (i) Set up Environment variabel `C:\xampp\mysql\bin`
+	(ii) mysql -u root -p (password: Not Used)
+	(iii) create database restaurant;
+	(iv) show databases;
+	(v) exit;
 
 #09. For data table create.
    => Command:  php artisan migrate 
