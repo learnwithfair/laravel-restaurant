@@ -1,15 +1,3 @@
-```cmd
-
-npm run dev
-
-```
-
-```cmd
-
-php artisan serve
-
-```
-
 # LARAVEL-RESTAURANT
 
 [![Youtube][youtube-shield]][youtube-url]
@@ -19,7 +7,7 @@ php artisan serve
 
 Thanks for visiting my GitHub account!
 
-<img src ="https://static-00.iconduck.com/assets.00/laravel-icon-1990x2048-xawylrh0.png" height = "200px" width = "200px"/> Laravel is a free and open-source PHP- based web framework for building high-end web applications. It was created by Taylor Otwell and intended for the development of web applications following the model–view–controller architectural pattern and based on Symfony. [see-more](https://laravel.com/docs/)
+<img src ="https://static-00.iconduck.com/assets.00/laravel-icon-1990x2048-xawylrh0.png" height = "200px" width = "200px"/> **Laravel** is a free and open-source PHP- based web framework for building high-end web applications. It was created by Taylor Otwell and intended for the development of web applications following the model–view–controller architectural pattern and based on Symfony. [see-more](https://laravel.com/docs/)
 
 ## Source Code (Download)
 
@@ -29,6 +17,9 @@ Thanks for visiting my GitHub account!
 ## Required Software (Download)
 
 -   VS Code, Download ->https://code.visualstudio.com/download
+-   XAMPP ,Download-> https://www.apachefriends.org/download.html
+-   Composer ,Download (Composer-Setup.exe)-> https://getcomposer.org/download/
+-   Nodejs ,Download -> https://nodejs.org/en/download
 
 ## Project Features
 
@@ -47,14 +38,60 @@ Thanks for visiting my GitHub account!
 
 |                                           |
 | :---------------------------------------: |
-|                 Dashboard                 |
+|                   HOME                    |
 | ![roadmap](DOCUMENTS/screanshot/home.png) |
 
-## For More
+## How to use this template
 
--   [CSS Full Course with a project | Zero to Hero | English Tutorial](https://youtu.be/lXYo52yFLDk)
--   [CSS complete course Bangla (Beginner to Advanced)](https://youtube.com/playlist?list=PLgH5QX0i9K3qjCBXjTmv7Xeh8MDUUVJDO)
--   [CSS eCommerce Project Bangla](https://youtube.com/playlist?list=PLgH5QX0i9K3rsTE0J6lv99JsJHlPlIvSC)
+Step-1: **For Set up Project**
+
+-   Clone to your local machine using `gh repo clone learnwithfair/laravel-restaurant`
+-   Run command in the root directory `npm install`
+
+Step-2: **Connect Database**
+
+-   In the .env file change the configuration as-
+
+```cnd
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=DatabaseName
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+-   Create data table write the command in cmd
+
+```cmd
+php artisan migrate
+```
+
+-   Note: If it's not correctly working then following the s
+
+    -   Manually, Create the desired database in the path-> `http://localhost/phpmyadmin/`
+    -   Or Create database using cmd as-
+
+        -   Set up the Environment variabel `C:\xampp\mysql\bin`
+        -   Write the command in the cmd
+
+        ```cmd
+        mysql -u root -p (password: Not Used)
+        create database DatabaseName; (semicolon must be add in the end)
+        show databases;
+        exit;
+        ```
+
+        -   Again run the command in the cmd as-
+
+        ```cmd
+        php artisan migrate
+        ```
+
+**For Run Project**
+
+-   Run command in the root directory `php artisan serve`
+-   Run command (Another CMD) in the root directory `npm run dev`
 
 ## Follow Me
 
