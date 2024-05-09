@@ -41,11 +41,11 @@ Thanks for visiting my GitHub account!
 |                   HOME                    |
 | ![roadmap](DOCUMENTS/screanshot/home.png) |
 
-## How to use this template
+## How to use this template?
 
 Step-1: **For Set up Project**
 
--   Clone to your local machine using `gh repo clone learnwithfair/laravel-restaurant`
+-   Clone this to your local machine using `gh repo clone learnwithfair/laravel-restaurant`
 -   Run command in the root directory `npm install`
 
 Step-2: **Connect Database**
@@ -107,8 +107,10 @@ php artisan migrate
 
 **For Run Project**
 
+-   Start the Xampp server
 -   Run command in the root directory `php artisan serve`
 -   Run command (Another CMD) in the root directory `npm run dev`
+-   Visit path -> http://127.0.0.1:8000/
 
 ## Follow Me
 
