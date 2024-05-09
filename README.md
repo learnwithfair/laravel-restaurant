@@ -52,7 +52,7 @@ Step-2: **Connect Database**
 
 -   In the .env file change the configuration as-
 
-```cnd
+```cmd
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -61,13 +61,30 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
+-   For Send Mail
+
+    -   Create a Mailtrap account using path -> https://mailtrap.io/
+    -   Get the username & password from Mailtrap account using path->https://mailtrap.io/inboxes/2087677/settings
+    -   Set up .env file as-
+
+    ```cmd
+    MAIL_MAILER=smtp
+    MAIL_HOST=sandbox.smtp.mailtrap.io
+    MAIL_PORT=2525
+    MAIL_USERNAME=YourUserName
+    MAIL_PASSWORD=YourPassword
+    MAIL_ENCRYPTION=tls
+    MAIL_FROM_ADDRESS="yourEmailAddress"
+    MAIL_FROM_NAME="${APP_NAME}"
+    ```
+
 -   Create data table write the command in cmd
 
 ```cmd
 php artisan migrate
 ```
 
--   Note: If it's not correctly working then following the s
+-   Note: If it's not working correctly then following the s
 
     -   Manually, Create the desired database in the path-> `http://localhost/phpmyadmin/`
     -   Or Create database using cmd as-
