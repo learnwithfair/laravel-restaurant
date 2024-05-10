@@ -48,11 +48,20 @@ Thanks for visiting my GitHub account!
 Step-1: **For Set up Project**
 
 -   Clone this to your local machine using `gh repo clone learnwithfair/laravel-restaurant`
--   Run command in the root directory `npm install`
+-   Run the command in the root directory
+    ```npm
+    i)  composer install or composer update
+    ii) npm install
+    ```
 
 Step-2: **Connect Database**
 
 -   In the .env file change the configuration as-
+
+```cmd
+APP_KEY=base64:2qbhz1ExIN5uT3YfW0XBWaVwh7GPdG44bRFRDjkQQog=
+```
+
 
 ```cmd
 DB_CONNECTION=mysql
