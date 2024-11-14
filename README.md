@@ -53,6 +53,7 @@ Step-1: **For Set up Project**
     i)  composer install or composer update
     ii) npm install
     ```
+  - if any error occurs then visit -> https://youtu.be/VQSobav5qyg?si=bpjwIcHxrjBLxtVp
 
 Step-2: **Connect Database**
 
